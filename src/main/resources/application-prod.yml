@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: validate # never create-drop or update in prod - schema owned by Flyway
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+logging:
+  pattern:
+    console: "" # suppress plain console - JSON goes to the file pattern below instead
+    file: '{"ts":"%d","lvl":"%p","msg":"%m"}%n'
